@@ -8,7 +8,7 @@ class open-java {
   }
   
   exec { "java-home":
-    command => "bash -c 'echo JAVA_HOME=/usr/lib/jvm/java-6-openjdk/ >> /etc/environment'",
+    command => "bash -c 'echo JAVA_HOME=/usr/lib/jvm/java-6-openjdk/ >> /etc/environment' && . /etc/environment",
     unless => "grep 'JAVA_HOME=' /etc/environment",
     path => ["/bin", "/usr/bin"],
     require => Package["openjdk-6-jdk"],
